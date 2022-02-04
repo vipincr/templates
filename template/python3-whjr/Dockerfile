@@ -9,11 +9,11 @@ ARG ADDITIONAL_PACKAGE
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
-RUN apk --no-cache add ca-certificates ${ADDITIONAL_PACKAGE}
-
+RUN apk --no-cache add ca-certificates shadow ${ADDITIONAL_PACKAGE} \
+    && echo "session  optional  pam_umask.so" >> /etc/pam.d/base-session-noninteractive 
 
 # Add non root user
-RUN addgroup -S app && adduser app -S -G app
+RUN addgroup -S app && adduser app -S -G app -g "umask=0000"
 
 WORKDIR /home/app/
 

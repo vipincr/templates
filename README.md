@@ -1,3 +1,7 @@
+# OpenFaas Templates customized
+
+Contains customized templates for internal use.
+
 # OpenFaaS Classic templates
 
 [![Build Status](https://github.com/openfaas/templates/workflows/ci-only/badge.svg?branch=master)](https://github.com/openfaas/templates/actions)
