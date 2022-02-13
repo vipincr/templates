@@ -1,19 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} ghcr.io/openfaas/classic-watchdog:0.2.0 as watchdog
-FROM --platform=${TARGETPLATFORM:-linux/amd64} python:3-alpine
-
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-
-# Allows you to add additional packages via build-arg
-ARG ADDITIONAL_PACKAGE
-
-COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
-RUN chmod +x /usr/bin/fwatchdog
-RUN apk --no-cache add ca-certificates shadow ${ADDITIONAL_PACKAGE} \
-    && echo "session  optional  pam_umask.so" >> /etc/pam.d/base-session-noninteractive 
-
-# Add non root user
-RUN addgroup -S app && adduser app -S -G app -g "umask=0000"
+FROM --platform=${TARGETPLATFORM:-linux/amd64} vipinex/whjr-python:latest
 
 WORKDIR /home/app/
 
