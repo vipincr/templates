@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} vipinex/whjr-node:1.0
+FROM --platform=${TARGETPLATFORM:-linux/amd64} vipinex/whjr-nodejs:1.0
 
 # Turn down the verbosity to default level.
 ENV NPM_CONFIG_LOGLEVEL warn
