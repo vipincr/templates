@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} vipinex/whjr-python:1.0
+FROM --platform=${TARGETPLATFORM:-linux/amd64} localhost:5000/whjr-python:1.0
 
 WORKDIR /home/app/
 
